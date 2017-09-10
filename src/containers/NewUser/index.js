@@ -8,18 +8,30 @@ class NewUser extends Component {
 
     // initial state
     this.state = {
-      userInput: ''
+      username: '',
+      password: ''
     };
+
+    // functions
+    this.handleNewUsername = this.handleNewUsername.bind(this);
+    this.handleNewPassword = this.handleNewPassword.bind(this);
+    this.submitUser = this.submitUser.bind(this);
   }
 
-  handleNewUserInput(e) {
+  handleNewUsername(e) {
     this.setState({
-      userInput: e.target.value
+      username: e.target.value
+    });
+  }
+
+  handleNewPassword(e) {
+    this.setState({
+      password: e.target.value
     });
   }
 
   submitUser() {
-    this.props.addUser(this.state.userInput);
+    this.props.addUser(this.state.username);
   }
 
   render() {
@@ -27,10 +39,15 @@ class NewUser extends Component {
       <div>
         <input
           type="text"
-          placeholder="New Name"
-          onChange={this.handleNewUserInput.bind(this)}
+          placeholder="username"
+          onChange={this.handleNewUsername}
         />
-        <button onClick={this.submitUser.bind(this)}>Submit</button>
+        <input
+          type="text"
+          placeholder="password"
+          onChange={this.handleNewPassword}
+        />
+        <button onClick={this.submitUser}>Submit</button>
       </div>
     );
   }

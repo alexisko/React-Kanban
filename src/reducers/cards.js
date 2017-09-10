@@ -1,12 +1,13 @@
 import {
   ADD_CARD,
-  EDIT_CARD
+  EDIT_CARD,
+  DELETE_CARD,
+  LOAD_CARDS
 } from '../actions/Cards.js';
 
 const initialState = [];
 
 const cards = (state = initialState, action) => {
-  console.log("IN REDUCER", action);
   switch(action.type) {
     case ADD_CARD:
       return [
@@ -16,7 +17,17 @@ const cards = (state = initialState, action) => {
 
     case EDIT_CARD:
       return [
-        action.card
+        ...action.cards
+      ];
+
+    case DELETE_CARD:
+      return [
+        ...action.card
+      ];
+
+    case LOAD_CARDS:
+      return [
+        ...action.cards
       ];
 
     default:

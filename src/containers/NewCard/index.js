@@ -9,35 +9,37 @@ class NewCard extends Component {
 
     // initial state
     this.state = {
-      cardTitle: '',
-      cardPriority: 'Low',
-      cardStatus: 'In Queue',
+      title: '',
+      priority: 'Low', //temp values
+      status: 'In Queue', //temp values
       createdBy: '',
       assignedTo: ''
     };
 
     // functions
-
+    this.handleTitleChange = this.handleTitleChange.bind(this);
+    this.handlePriorityChange = this.handlePriorityChange.bind(this);
+    this.handleStatusChange = this.handleStatusChange.bind(this);
+    this.handleCreatedByChange = this.handleCreatedByChange.bind(this);
+    this.handleAssignedToChange = this.handleAssignedToChange.bind(this);
+    this.submitCard = this.submitCard.bind(this);
   }
 
   handleTitleChange(e) {
     this.setState({
-      cardTitle: e.target.value
+      title: e.target.value
     });
   }
 
   handlePriorityChange(e) {
-    var priority = document.getElementById('priority').value;
     this.setState({
-      cardPriority: priority
+      priority: e.target.value
     });
   }
 
   handleStatusChange(e) {
-    var status = document.getElementById('status');
-    var curStatus = status.options[status.selectedIndex].value;
     this.setState({
-      cardStatus: curStatus
+      status: e.target.value
     });
   }
 
@@ -54,27 +56,24 @@ class NewCard extends Component {
   }
 
   submitCard(e) {
-    console.log("SUBMIT", this.state);
     e.preventDefault();
     this.props.addCard(this.state);
   }
 
   render() {
-    console.log("CUR STATE:", this.state);
     return(
       <form>
         <label>Title:</label>
         <input
           type="text"
-          onChange={this.handleTitleChange.bind(this)}
+          onChange={this.handleTitleChange}
         />
 
         <br />
 
         <label>Priority:</label>
         <select
-          id="priority"
-          onChange={this.handlePriorityChange.bind(this)}
+          onChange={this.handlePriorityChange}
         >
           <option value="Low">Low</option>
           <option value="Medium">Medium</option>
@@ -85,8 +84,8 @@ class NewCard extends Component {
 
         <label>Status:</label>
         <select
-          id="status"
-          onChange={this.handleStatusChange.bind(this)}>
+          onChange={this.handleStatusChange}
+        >
           <option value="In Queue">In Queue</option>
           <option value="In Progress">In Progress</option>
           <option value="Done">Done</option>
@@ -97,7 +96,7 @@ class NewCard extends Component {
         <label>Created By:</label>
         <input
           type="text"
-          onChange={this.handleCreatedByChange.bind(this)}
+          onChange={this.handleCreatedByChange}
         />
 
         <br />
@@ -105,12 +104,12 @@ class NewCard extends Component {
         <label>Assigned To:</label>
         <input
           type="text"
-          onChange={this.handleAssignedToChange.bind(this)}
+          onChange={this.handleAssignedToChange}
         />
 
         <br />
 
-        <button onClick={this.submitCard.bind(this)}>Submit</button>
+        <button onClick={this.submitCard}>Submit</button>
       </form>
     );
   }

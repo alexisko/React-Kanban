@@ -7,7 +7,7 @@ const UserList = ({ users }) => {
       {
         users.map((user) => {
           return (
-            <UserItem name={user} />
+            <UserItem username={user} />
           )
         })
       }

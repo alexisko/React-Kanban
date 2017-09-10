@@ -1,26 +1,46 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
 
+import { editCard } from '../../actions/Cards.js';
+
 class EditCard extends Component {
-  constructor() {
-    super();
+  constructor(props) {
+    super(props);
+
+    // initial state
+    this.state = {
+      id: props.id,
+      title: props.title,
+      priority: props.priority,
+      status: props.status,
+      createdBy: props.createdBy,
+      assignedTo: props.assignedTo
+    };
+
+    // functions
+    this.handleTitleChange = this.handleTitleChange.bind(this);
+    this.handlePriorityChange = this.handlePriorityChange.bind(this);
+    this.handleStatusChange = this.handleStatusChange.bind(this);
+    this.handleCreatedByChange = this.handleCreatedByChange.bind(this);
+    this.handleAssignedToChange = this.handleAssignedToChange.bind(this);
+    this.submitEditCard = this.submitEditCard.bind(this);
   }
 
   handleTitleChange(e) {
     this.setState({
-      cardTitle: e.target.value
+      title: e.target.value
     });
   }
 
   handlePriorityChange(e) {
     this.setState({
-      cardPriority: e.target.value
+      priority: e.target.value
     });
   }
 
   handleStatusChange(e) {
     this.setState({
-      cardStatus: e.target.value
+      status: e.target.value
     });
   }
 
@@ -36,18 +56,73 @@ class EditCard extends Component {
     });
   }
 
-  submitCard(e) {
+  submitEditCard(e) {
     e.preventDefault();
-    this.props.addCard(this.state);
-
+    console.log("BUTTON", this.state);
+    this.props.editCard(this.state);
   }
 
   render() {
-    return();
+    return(
+      <form>
+        <label>Title:</label>
+        <input
+          type="text"
+           value={this.state.title}
+          onChange={this.handleTitleChange}
+        />
+
+        <br />
+
+        <label>Priority:</label>
+        <select
+          id="priority"
+          value={this.state.priority}
+          onChange={this.handlePriorityChange}
+        >
+          <option value="Low">Low</option>
+          <option value="Medium">Medium</option>
+          <option value="High">High</option>
+        </select>
+
+        <br />
+
+        <label>Status:</label>
+        <select
+          id="status"
+          value={this.state.status}
+          onChange={this.handleStatusChange}
+        >
+          <option value="In Queue">In Queue</option>
+          <option value="In Progress">In Progress</option>
+          <option value="Done">Done</option>
+        </select>
+
+        <br />
+
+        <label>Created By:</label>
+        <input
+          type="text"
+          value={this.state.createdBy}
+          onChange={this.handleCreatedByChange}
+        />
+
+        <br />
+
+        <label>Assigned To:</label>
+        <input
+          type="text"
+          value={this.state.assignedTo}
+          onChange={this.handleAssignedToChange}
+        />
+
+        <br />
+
+        <button onClick={this.submitEditCard}>Submit</button>
+      </form>
+    );
   }
 }
-
-
 
 const mapDispatchToProps = (dispatch) => {
   return {
