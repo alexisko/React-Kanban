@@ -20,18 +20,20 @@ class Card extends Component {
 
   handleDeleteButton(e) {
     e.preventDefault();
-    this.props.deleteCard(this.state);
+    this.props.deleteCard(this.props);
   }
 
   render() {
     return (
       <div>
-        <p>Title: {this.props.title}</p>
-        <p>Priority: {this.props.priority}</p>
-        <p>Created By: {this.props.createdBy}</p>
-        <p>Assigned To: {this.props.assignedTo}</p>
-        <button onClick={this.handleEditButton}>Edit</button>
-        <button onClick={this.handleDeleteButton}>Delete</button>
+        <div className="alert alert-warning">
+          <p>Title: {this.props.title}</p>
+          <p>Priority: {this.props.priority}</p>
+          <p>Created By: {this.props.createdBy}</p>
+          <p>Assigned To: {this.props.assignedTo}</p>
+          <button onClick={this.handleEditButton}>Edit</button>
+          <button onClick={this.handleDeleteButton}>Delete</button>
+        </div>
         <EditCard
           id={this.props.id}
           title={this.props.title}
