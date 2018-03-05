@@ -22,6 +22,8 @@ router.route('/logout')
 /* Create new user */
 router.route('/signup')
   .post((req, res) => {
+    console.log('in backend');
+    console.log(req.body);
     bcrypt.genSalt(saltRounds)
     .then((salt) => {
       bcrypt.hash(req.body.password, salt)

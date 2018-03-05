@@ -21,6 +21,7 @@ const userRouter = require('./routes/user.js');
 const cardRouter = require('./routes/card.js');
 
 // BODY-PARSER
+app.use(bp.json());
 app.use(bp.urlencoded({extended:true}));
 
 // SESSION
@@ -95,7 +96,7 @@ passport.deserializeUser((userId, done) => {
 });
 
 // ROUTES
-app.use('/', userRouter);
+app.use('/user', userRouter);
 
 // SERVER
 const server = app.listen(PORT, () => {

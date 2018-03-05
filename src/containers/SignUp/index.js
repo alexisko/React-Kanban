@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
-import { Link } from 'react-router-dom';
-import './SignUp.css';
+import { Link, Redirect } from 'react-router-dom';
+import { createNewUser } from "../../utils/user.js";
+import './styles.css';
 
 class SignUp extends Component {
   constructor(props) {
@@ -9,7 +10,8 @@ class SignUp extends Component {
     // initial state
     this.state = {
       username: '',
-      password: ''
+      password: '',
+      redirect: false
     };
 
     // functions
@@ -37,37 +39,47 @@ class SignUp extends Component {
     };
 
     if(user.username !== '' && user.password !== '') {
-      console.log('GOOD');
+      createNewUser(user)
+        .then(() => {
+          console.log('done');
+          this.setState({
+            redirect: true
+          });
+        });
     } else {
       // TODO: ERROR HANDLING
     }
   }
 
   render() {
-    return (
-      <div className="sign-up">
-        <h1>Create an account</h1>
-        <label htmlFor="username">Username</label>
-        <input
-          name="username"
-          type="text"
-          placeholder=""
-          onChange={this.handleUsernameChange}
-        />
-        <label htmlFor="password">Password</label>
-        <input
-          name="password"
-          type="password"
-          placeholder=""
-          onChange={this.handlePasswordChange}
-        />
-        <input
-          type="submit"
-          onClick={this.handleSignUp}
-        />
-        <p>Already have an account? Login <Link to="/login">here!</Link></p>
-      </div>
-    );
+    if(this.state.redirect) {
+      return (<Redirect to="/login" />);
+    } else {
+      return (
+        <div className="sign-up">
+          <h1>Create an account</h1>
+          <label htmlFor="username">Username</label>
+          <input
+            name="username"
+            type="text"
+            placeholder=""
+            onChange={this.handleUsernameChange}
+          />
+          <label htmlFor="password">Password</label>
+          <input
+            name="password"
+            type="password"
+            placeholder=""
+            onChange={this.handlePasswordChange}
+          />
+          <input
+            type="submit"
+            onClick={this.handleSignUp}
+          />
+          <p>Already have an account? Login <Link to="/login">here!</Link></p>
+        </div>
+      );
+    }
   }
 }
 
