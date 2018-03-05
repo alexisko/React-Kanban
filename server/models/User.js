@@ -12,6 +12,13 @@ module.exports = function(sequelize, DataTypes) {
   });
 
   User.associate = function(models) {
-
+    User.hasMany(models.Card, {
+      foreignKey: {
+        name: "user_id",
+        allowNull: false
+      }
+    });
   };
+
+  return User;
 };
