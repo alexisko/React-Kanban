@@ -6,7 +6,7 @@ import './styles.css';
 import HomePage from '../HomePage';
 
 // CONTAINERS
-import Login from '../../containers/Login';
+import ConnectedLogin from '../../containers/Login';
 import SignUp from '../../containers/SignUp';
 
 const Home = () => {
@@ -14,9 +14,8 @@ const Home = () => {
     <div className="home">
       <Switch>
         <Route path="/" exact component={HomePage} />
-        <Route path="/login" exact component={Login} />
+        <Route path="/login" exact component={ConnectedLogin} />
         <Route path="/signup" exact component={SignUp} />
-        <Redirect to="/" />
       </Switch>
     </div>
   );

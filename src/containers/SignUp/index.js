@@ -41,7 +41,6 @@ class SignUp extends Component {
     if(user.username !== '' && user.password !== '') {
       createNewUser(user)
         .then(() => {
-          console.log('done');
           this.setState({
             redirect: true
           });

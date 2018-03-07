@@ -10,6 +10,7 @@ const saltRounds = 10;
 /* Login existing user */
 router.route('/login')
   .post(passport.authenticate('local'), (req, res) => {
+    console.log(req.body);
     res.json({ username: req.body.username});
   });
 
@@ -22,8 +23,6 @@ router.route('/logout')
 /* Create new user */
 router.route('/signup')
   .post((req, res) => {
-    console.log('in backend');
-    console.log(req.body);
     bcrypt.genSalt(saltRounds)
     .then((salt) => {
       bcrypt.hash(req.body.password, salt)

@@ -1,22 +1,16 @@
 import axios from 'axios';
 
 export const login = (user) => {
-  return axios.post('/login', user)
-    .then((user) => {
-
-    })
-    .catch((err) => {
-
-    });
+  return axios.post('/user/login', user);
 };
 
 export const logout = () => {
-  return axios.post('/logout')
+  return axios.post('/user/logout')
     .then(() => {
-
+      console.log('SUCCESS: User was logged out');
     })
     .catch((err) => {
-
+      console.log('ERROR:', err);
     });
 };
 
@@ -26,7 +20,6 @@ export const createNewUser = (user) => {
       console.log('SUCCESS: User was successfully created');
     })
     .catch((err) => {
-      console.log('kljdsfklds');
       console.log('ERROR:', err);
     });
 };

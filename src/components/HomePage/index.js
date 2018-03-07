@@ -4,7 +4,7 @@ import './styles.css';
 
 const HomePage = () => {
   return (
-    <div>
+    <div className="home">
       <h1>REACT-KANBAN</h1>
       <Link to="/login">Login</Link>
       <Link to="/signup">SignUp</Link>

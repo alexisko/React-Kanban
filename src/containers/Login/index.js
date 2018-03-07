@@ -1,6 +1,9 @@
 import React, { Component } from 'react';
-import { Link } from 'react-router-dom';
-import './Login.css';
+import { connect } from 'react-redux';
+import { Link, Redirect } from 'react-router-dom';
+import { loginUser } from '../../actions/users.js';
+import { login } from '../../utils/user.js';
+import './styles.css';
 
 class Login extends Component {
   constructor(props) {
@@ -9,7 +12,8 @@ class Login extends Component {
     // initial state
     this.state = {
       username: '',
-      password: ''
+      password: '',
+      redirect: false
     };
 
     // functions
@@ -38,13 +42,21 @@ class Login extends Component {
     };
 
     if(user.username !== '' && user.password !== '') {
-      console.log('GOOD');
+      login(user).then((user) => {
+        this.props.loginUser(user.data.username);
+        this.setState({
+          redirect: true
+        });
+      });
     } else {
       // TODO: ERROR HANDLING
     }
   }
 
   render() {
+    if(this.state.redirect) {
+      return(<Redirect to="/board" />);
+    }
     return (
       <div className="login">
         <h1>Login to React-Kanban</h1>
@@ -72,4 +84,12 @@ class Login extends Component {
   }
 }
 
-export default Login;
+const mapDispatchToProps = (dispatch) => {
+  return {
+    loginUser: user => {
+      dispatch(loginUser(user));
+    }
+  }
+}
+
+export default connect(null, mapDispatchToProps)(Login);
