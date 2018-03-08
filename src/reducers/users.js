@@ -6,10 +6,13 @@ import {
 const initialState = [];
 
 const users = (state = initialState, action) => {
+  console.log(action.type);
   switch(action.type) {
     case LOGIN_USER:
       let users = [...state, action.user];
       return users;
+    case LOGOUT_USER:
+      return [];
     default:
       return state;
   }

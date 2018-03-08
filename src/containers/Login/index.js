@@ -8,7 +8,7 @@ import './styles.css';
 class Login extends Component {
   constructor(props) {
     super(props);
-
+    console.log(this.props);
     // initial state
     this.state = {
       username: '',

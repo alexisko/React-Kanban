@@ -14,9 +14,10 @@ export const loginUser = (user) => {
 
 export const logoutUser = () => {
   return dispatch => {
-    axios.post('/user/logout')
-      .then(() => {
-        console.log('logout');
+    axios.get('/user/logout').then(() => {
+      dispatch({
+        type: LOGOUT_USER
       });
+    });
   }
 }

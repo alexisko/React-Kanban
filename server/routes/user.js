@@ -18,6 +18,7 @@ router.route('/login')
 router.route('/logout')
   .get((req, res) => {
     req.session.destroy();
+    res.end();
   });
 
 /* Create new user */
