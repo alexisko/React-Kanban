@@ -53,32 +53,31 @@ class SignUp extends Component {
   render() {
     if(this.state.redirect) {
       return (<Redirect to="/login" />);
-    } else {
-      return (
-        <div className="sign-up">
-          <h1>Create an account</h1>
-          <label htmlFor="username">Username</label>
-          <input
-            name="username"
-            type="text"
-            placeholder=""
-            onChange={this.handleUsernameChange}
-          />
-          <label htmlFor="password">Password</label>
-          <input
-            name="password"
-            type="password"
-            placeholder=""
-            onChange={this.handlePasswordChange}
-          />
-          <input
-            type="submit"
-            onClick={this.handleSignUp}
-          />
-          <p>Already have an account? Login <Link to="/login">here!</Link></p>
-        </div>
-      );
     }
+    return (
+      <div className="sign-up">
+        <h1>Create an account</h1>
+        <label htmlFor="username">Username</label>
+        <input
+          name="username"
+          type="text"
+          placeholder=""
+          onChange={this.handleUsernameChange}
+        />
+        <label htmlFor="password">Password</label>
+        <input
+          name="password"
+          type="password"
+          placeholder=""
+          onChange={this.handlePasswordChange}
+        />
+        <input
+          type="submit"
+          onClick={this.handleSignUp}
+        />
+        <p>Already have an account? Login <Link to="/login">here!</Link></p>
+      </div>
+    );
   }
 }
 

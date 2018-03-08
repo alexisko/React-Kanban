@@ -5,22 +5,20 @@ import { Route, Redirect } from 'react-router-dom';
 class ProtectedRoute extends Component {
   constructor(props) {
     super(props);
-    console.log('ProtectedRoute');
-    console.log(this.props);
   }
 
   render() {
     const { component: Component, ...rest} = this.props;
-    return (
-      <Route
-        {...rest}
-        render={props => {
-          this.props.users.length > 0 ?
-          (<Component {...props} />) :
-          (<Redirect to='/login' />)
-        }}
-      />
-    );
+
+    if(this.props.users.length > 0) {
+      return (
+        <Component {...this.props} />
+      );
+    } else {
+      return (
+        <Redirect to='/login' />
+      );
+    }
   }
 }
 
