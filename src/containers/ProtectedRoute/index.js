@@ -1,12 +1,8 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
-import { Route, Redirect } from 'react-router-dom';
+import { Redirect } from 'react-router-dom';
 
 class ProtectedRoute extends Component {
-  constructor(props) {
-    super(props);
-  }
-
   render() {
     const { component: Component, ...rest} = this.props;
 

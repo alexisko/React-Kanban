@@ -10,6 +10,6 @@ export const createNewUser = (user) => {
       console.log('SUCCESS: User was successfully created');
     })
     .catch((err) => {
-      console.log('ERROR:', err);
+      console.log('ERROR: ', err);
     });
 };

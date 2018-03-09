@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
-import { connect } from 'react-redux';
-import { logoutUser } from '../../actions/users.js';
+
+import BoardDesktop from './BoardDesktop';
 
 class Board extends Component {
   constructor(props) {
@@ -13,7 +13,6 @@ class Board extends Component {
 
     // functions
     this.handleWindowSizeChange = this.handleWindowSizeChange.bind(this);
-    this.handleLogout = this.handleLogout.bind(this);
   }
 
   componentWillMount() {
@@ -31,10 +30,6 @@ class Board extends Component {
     });
   }
 
-  handleLogout() {
-    this.props.logoutUser();
-  }
-
   render() {
     const { width } = this.state;
     const isMobile = width <= 400 ? true : false;
@@ -47,33 +42,11 @@ class Board extends Component {
     } else {
       return (
         <div>
-          <header>
-            <span>React-Kanban</span>
-            <div>
-              <button onClick={this.handleLogout}>Logout</button>
-            </div>
-          </header>
-          <main>
-            <h1>Desktop</h1>
-          </main>
+          <BoardDesktop />
         </div>
       );
     }
   }
 }
 
-const mapStateToProps = (state) => {
-  return {
-    users: state.users
-  }
-}
-
-const mapDispatchToProps = (dispatch) => {
-  return {
-    logoutUser: () => {
-      dispatch(logoutUser());
-    }
-  }
-}
-
-export default connect(mapStateToProps, mapDispatchToProps)(Board);
+export default Board;

@@ -10,8 +10,10 @@ const saltRounds = 10;
 /* Login existing user */
 router.route('/login')
   .post(passport.authenticate('local'), (req, res) => {
-    console.log(req.body);
-    res.json({ username: req.body.username});
+    res.json({
+      user_id: req.user.id,
+      username: req.user.username
+    });
   });
 
 /* Logout current user */

@@ -8,7 +8,7 @@ import './styles.css';
 class Login extends Component {
   constructor(props) {
     super(props);
-    console.log(this.props);
+
     // initial state
     this.state = {
       username: '',
@@ -43,7 +43,10 @@ class Login extends Component {
 
     if(user.username !== '' && user.password !== '') {
       login(user).then((user) => {
-        this.props.loginUser(user.data.username);
+        this.props.loginUser({
+          user_id: user.data.user_id,
+          username: user.data.username
+        });
         this.setState({
           redirect: true
         });

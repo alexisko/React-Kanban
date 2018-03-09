@@ -14,10 +14,14 @@ export const loginUser = (user) => {
 
 export const logoutUser = () => {
   return dispatch => {
-    axios.get('/user/logout').then(() => {
-      dispatch({
-        type: LOGOUT_USER
+    axios.get('/user/logout')
+      .then(() => {
+        dispatch({
+          type: LOGOUT_USER
+        })
+      })
+      .catch((err) => {
+        console.log('ERROR: ', err);
       });
-    });
   }
 }
