@@ -1,4 +1,5 @@
 import React, { Component } from 'react';
+import './styles.css';
 
 class Modal extends Component {
   render() {
@@ -7,9 +8,11 @@ class Modal extends Component {
     }
 
     return (
-      <div>
-        <h1>Modal</h1>
-        {this.props.children}
+      <div className="modal__backdrop">
+        <div className="modal__main">
+          <h1>Modal</h1>
+          {this.props.children}
+        </div>
       </div>
     );
   }

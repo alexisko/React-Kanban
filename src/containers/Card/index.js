@@ -1,16 +1,18 @@
 import React, { Component } from 'react';
+import './styles.css';
 
 class Card extends Component {
   constructor(props) {
     super(props);
-    console.log(this.props);
   }
 
   render() {
     return (
       <div className="card">
-        <h1>Card</h1>
           <p>{this.props.task}</p>
+          <p>Priority: {this.props.priority}</p>
+          <p>Assigned By: {this.props.created_by}</p>
+          <p>Assigned to: {this.props.assigned_to}</p>
       </div>
     );
   }

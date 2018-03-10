@@ -1,5 +1,4 @@
 import React, { Component } from 'react';
-import { connect } from 'react-redux';
 import { getAllCards } from '../../utils/card.js';
 
 import BoardDesktop from './BoardDesktop';

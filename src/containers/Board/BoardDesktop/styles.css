@@ -1,0 +1,28 @@
+.board-desktop > header {
+  background-color: dodgerblue;
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  padding: 1rem;
+}
+
+.board-desktop__h1 {
+  font-family: 'Montserrat', sans-serif;
+  font-size: 1.5rem;
+  color: white;
+  margin: 0;
+  text-transform: uppercase;
+  text-shadow: 2px 2px 0 darkblue;
+}
+
+.board-desktop__nav {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+}
+
+.board-desktop > main {
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+}

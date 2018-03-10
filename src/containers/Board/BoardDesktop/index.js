@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import { logoutUser } from '../../../actions/users.js';
+import './styles.css';
 
 import Modal from '../Modal';
 import Column from '../../Column';
@@ -44,10 +45,11 @@ class BoardDesktop extends Component {
 
   render() {
     return (
-      <div>
+      <div className="board-desktop">
         <header>
-          <h1>React-Kanban</h1>
-          <div>
+          <h1 className="board-desktop__h1">React-Kanban</h1>
+          <div className="board-desktop__nav">
+            <button>{this.props.users[0].username}</button>
             <button onClick={this.openModal}>Create New</button>
             <Modal isOpen={this.state.isModalOpen}>
               <button onClick={this.closeModal}>Close</button>
@@ -56,7 +58,6 @@ class BoardDesktop extends Component {
           </div>
         </header>
         <main>
-          <h1>Desktop</h1>
           <Column status='To-Do' cards={this.sortCards('To-Do')} />
           <Column status='In Progress' cards={this.sortCards('In Progress')} />
           <Column status='Done' cards={this.sortCards('Done')} />

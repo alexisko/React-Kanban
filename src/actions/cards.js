@@ -1,5 +1,3 @@
-import axios from 'axios';
-
 export const CARDS_ALL = 'CARDS_ALL';
 export const CARDS_NEW = 'CARDS_NEW';
 

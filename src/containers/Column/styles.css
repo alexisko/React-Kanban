@@ -1,5 +1,23 @@
-.column {
+.column, .column__section {
   display: flex;
-  flex-direction: row;
-  justify-content: center;
+  flex-direction: column;
+  justify-content: flex-start;
+}
+
+.column {
+  width: 33%;
+  height: 100%;
+}
+
+.column > h1 {
+  margin: 1.5rem 0 0 0;
+  text-align: center;
+}
+
+.column__section {
+  background-color: lightgray;
+  border-radius: 1rem;
+  padding: 1rem;
+  margin: 1rem;
+  height: 70vh;
 }
