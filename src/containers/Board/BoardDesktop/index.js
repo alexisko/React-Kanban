@@ -3,11 +3,11 @@ import { connect } from 'react-redux';
 import { logoutUser } from '../../../actions/users.js';
 
 import Modal from '../Modal';
+import Column from '../../Column';
 
 class BoardDesktop extends Component {
   constructor(props) {
     super(props);
-    console.log(props);
 
     this.state = {
       isModalOpen: false
@@ -17,6 +17,7 @@ class BoardDesktop extends Component {
     this.handleLogout = this.handleLogout.bind(this);
     this.openModal = this.openModal.bind(this);
     this.closeModal = this.closeModal.bind(this);
+    this.sortCards = this.sortCards.bind(this);
   }
 
   handleLogout() {
@@ -35,6 +36,12 @@ class BoardDesktop extends Component {
     });
   }
 
+  sortCards(status) {
+    return this.props.cards.filter(card => {
+      return card.status === status;
+    });
+  }
+
   render() {
     return (
       <div>
@@ -50,6 +57,9 @@ class BoardDesktop extends Component {
         </header>
         <main>
           <h1>Desktop</h1>
+          <Column status='To-Do' cards={this.sortCards('To-Do')} />
+          <Column status='In Progress' cards={this.sortCards('In Progress')} />
+          <Column status='Done' cards={this.sortCards('Done')} />
         </main>
       </div>
     );

@@ -11,7 +11,7 @@ const CONFIG = require('./config/config.json');
 
 // DB
 const db = require('./models');
-const { User } = db;
+const { User, Card } = db;
 
 // EXPRESS
 const app = express();
@@ -97,6 +97,7 @@ passport.deserializeUser((userId, done) => {
 
 // ROUTES
 app.use('/user', userRouter);
+app.use('/card', cardRouter);
 
 // SERVER
 const server = app.listen(PORT, () => {

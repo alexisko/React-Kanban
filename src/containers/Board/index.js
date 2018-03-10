@@ -1,4 +1,6 @@
 import React, { Component } from 'react';
+import { connect } from 'react-redux';
+import { getAllCards } from '../../utils/card.js';
 
 import BoardDesktop from './BoardDesktop';
 
@@ -8,11 +10,20 @@ class Board extends Component {
 
     // initial state
     this.state = {
-      width: window.innerWidth
-    }
+      width: window.innerWidth,
+      cardsLoaded: false
+    };
 
     // functions
     this.handleWindowSizeChange = this.handleWindowSizeChange.bind(this);
+
+    getAllCards()
+      .then((cards) => {
+        this.setState({
+          cardsLoaded: true,
+          cards: cards.data
+        });
+      });
   }
 
   componentWillMount() {
@@ -33,18 +44,22 @@ class Board extends Component {
   render() {
     const { width } = this.state;
     const isMobile = width <= 400 ? true : false;
-    if(isMobile) {
-      return (
-        <div>
-          <h1>Mobile</h1>
-        </div>
-      );
+    if(this.state.cardsLoaded) {
+      if(isMobile) {
+        return (
+          <div>
+            <h1>Mobile</h1>
+          </div>
+        );
+      } else {
+        return (
+          <div>
+            <BoardDesktop cards={this.state.cards}/>
+          </div>
+        );
+      }
     } else {
-      return (
-        <div>
-          <BoardDesktop />
-        </div>
-      );
+      return null;
     }
   }
 }

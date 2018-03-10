@@ -9,8 +9,8 @@ export const loginUser = (user) => {
       type: LOGIN_USER,
       user: user
     });
-  }
-}
+  };
+};
 
 export const logoutUser = () => {
   return dispatch => {
@@ -18,10 +18,10 @@ export const logoutUser = () => {
       .then(() => {
         dispatch({
           type: LOGOUT_USER
-        })
+        });
       })
       .catch((err) => {
         console.log('ERROR: ', err);
       });
-  }
-}
+  };
+};
