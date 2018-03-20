@@ -2,8 +2,50 @@
   display: flex;
   flex-direction: column;
   align-items: center;
-  justify-content: center;
-  width: 100%;
-  height: 100vh;
-  background-color: dodgerblue;
+}
+
+.login > a, a:link,
+a:hover, a:visited {
+  font-weight: bolder;
+  color: darkgray;
+}
+
+.login > form {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.login > h1 {
+  font-family: 'Montserrat', sans-serif;
+  font-size: 2.5rem;
+  margin-bottom: 3rem;
+}
+
+.login > span,
+.login > label {
+  font-size: 12px;
+  color: darkgray;
+}
+
+.login__input {
+  border: 0;
+  border-bottom: 1px solid lightgray;
+  color: gray;
+  height: 25px;
+  width: 300px;
+  margin-bottom: 2rem;
+}
+
+.login__submit {
+  background-color: coral;
+  border: 0;
+  border-radius: 1rem;
+  color: white;
+  letter-spacing: 1px;
+  padding: 0.5rem;
+  text-align: center;
+  text-transform: uppercase;
+  margin: 1rem;
+  width: 300px;
 }

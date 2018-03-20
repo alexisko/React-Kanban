@@ -5,6 +5,7 @@ import './styles.css';
 
 import Modal from '../Modal';
 import Column from '../../Column';
+import CardNew from '../../CardNew';
 
 class BoardDesktop extends Component {
   constructor(props) {
@@ -52,6 +53,7 @@ class BoardDesktop extends Component {
             <button>{this.props.users[0].username}</button>
             <button onClick={this.openModal}>Create New</button>
             <Modal isOpen={this.state.isModalOpen}>
+              <CardNew />
               <button onClick={this.closeModal}>Close</button>
             </Modal>
             <button onClick={this.handleLogout}>Logout</button>

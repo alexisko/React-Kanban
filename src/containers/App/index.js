@@ -14,10 +14,7 @@ class App extends Component {
     return (
       <Switch>
         <Route exact path="/" component={HomePage} />
-        <Route exact path="/login" component={Login} />
-        <Route exact path="/signup" component={SignUp} />
         <ProtectedRoute path="/board" component={Board} />
-        <Redirect to="/" />
       </Switch>
     );
   }

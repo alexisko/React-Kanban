@@ -62,9 +62,10 @@ class Login extends Component {
     }
     return (
       <div className="login">
-        <h1>Login to React-Kanban</h1>
+        <h1>Welcome back!</h1>
         <label htmlFor="username">Username</label>
         <input
+          className="login__input"
           name="username"
           type="text"
           placeholder=""
@@ -72,16 +73,14 @@ class Login extends Component {
         />
         <label htmlFor="password">Password</label>
         <input
+          className="login__input"
           name="password"
           type="password"
           placeholder=""
           onChange={this.handlePasswordChange}
         />
-        <input
-          type="submit"
-          onClick={this.handleLogin}
-        />
-        <p>New to React-Kanban? <Link to="/signup">Create an account!</Link></p>
+        <input className="login__submit" type="submit" value="Login" onClick={this.handleLogin}/>
+        <span>New to React-Kanban? <Link to="/signup">Create an account!</Link></span>
       </div>
     );
   }

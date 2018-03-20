@@ -55,27 +55,30 @@ class SignUp extends Component {
       return (<Redirect to="/login" />);
     }
     return (
-      <div className="sign-up">
+      <div className="signup">
         <h1>Create an account</h1>
         <label htmlFor="username">Username</label>
         <input
+          className="signup__input"
           name="username"
           type="text"
-          placeholder=""
+          placeholder="ex. productivitybot123"
           onChange={this.handleUsernameChange}
         />
         <label htmlFor="password">Password</label>
         <input
+          className="signup__input"
           name="password"
           type="password"
-          placeholder=""
+          placeholder="******"
           onChange={this.handlePasswordChange}
         />
         <input
+          className="signup__submit"
           type="submit"
           onClick={this.handleSignUp}
         />
-        <p>Already have an account? Login <Link to="/login">here!</Link></p>
+        <span>Already have an account? Login <Link to="/login">here!</Link></span>
       </div>
     );
   }

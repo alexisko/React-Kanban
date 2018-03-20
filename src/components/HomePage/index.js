@@ -1,19 +1,33 @@
 import React from 'react';
-import { Link } from 'react-router-dom';
+import { Switch, Route, Redirect } from 'react-router-dom';
 import './styles.css';
 
-const HomePage = () => {
+import Login from '../../containers/Login';
+import SignUp from '../../containers/SignUp';
+
+const HomePage = ({ match }) => {
   return (
     <div className="home-page">
-      <div className="home-page__title">
-        <span className="home-page__welcome">Welcome to,</span>
-        <h1>REACT-KANBAN</h1>
-        <span className="home-page__desc">Your online tool for getting sh*t done!</span>
-      </div>
-
-      <div className="home-page__nav">
-        <Link to="/login"><button>Login</button></Link>
-        <Link to="/signup"><button>SignUp</button></Link>
+      <div className="home-page__container">
+        <div className="home-page__container--left">
+          <div className="home-page__shapes">
+            <div className="home-page__shapes--sml-circle" />
+            <div className="home-page__shapes--container">
+              <div className="home-page__shapes--square"/>
+              <div className="home-page__shapes--circle"/>
+            </div>
+          </div>
+          <h1>REACT-KANBAN</h1>
+          <div className="orange-line" />
+          <span>Lorem ipsum dolor amet tofu typewriter keytar, selfies listicle migas hot chicken cardigan knausgaard cred letterpress art party glossier brunch microdosing.</span>
+        </div>
+        <div className="home-page__container--right">
+          <Switch>
+            <Route path="/" exact component={SignUp} />
+            <Route path="/signup" exact component={SignUp} />
+            <Redirect to="/" />
+          </Switch>
+        </div>
       </div>
     </div>
   );
