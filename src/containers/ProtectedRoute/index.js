@@ -12,7 +12,7 @@ class ProtectedRoute extends Component {
       );
     } else {
       return (
-        <Redirect to='/login' />
+        <Redirect to='/' />
       );
     }
   }

@@ -23,9 +23,9 @@ const HomePage = ({ match }) => {
         </div>
         <div className="home-page__container--right">
           <Switch>
-            <Route path="/" exact component={SignUp} />
-            <Route path="/signup" exact component={SignUp} />
-            <Redirect to="/" />
+            <Route path={`${match.path}`} exact component={Login} />
+            <Route path={`${match.path}signup`} exact component={SignUp} />
+            <Redirect to={`${match.url}`} />
           </Switch>
         </div>
       </div>

@@ -78,7 +78,7 @@ class SignUp extends Component {
           type="submit"
           onClick={this.handleSignUp}
         />
-        <span>Already have an account? Login <Link to="/login">here!</Link></span>
+        <span>Already have an account? Login <Link to="/">here!</Link></span>
       </div>
     );
   }

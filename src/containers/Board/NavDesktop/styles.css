@@ -1,0 +1,39 @@
+header {
+  background-color: dodgerblue;
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  padding: 1rem;
+}
+
+button {
+  border: 0;
+  border-radius: 3px;
+  color: white;
+  font-family: 'Roboto', sans-serif;
+  padding: 0.3rem 1rem;
+  margin: 0 0.5rem;
+}
+
+.nav__logout {
+  background-color: rgba(0,0,0,0.3);
+}
+
+.nav__new-task {
+  background-color: coral;
+}
+
+.nav-desktop__logo {
+  font-family: 'Montserrat', sans-serif;
+  font-size: 1.3rem;
+  color: white;
+  text-transform: uppercase;
+  text-decoration: none;
+  text-shadow: 2px 2px 0 rgba(0,0,0,0.5);
+}
+
+.nav-desktop__nav {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+}
