@@ -1,7 +1,8 @@
 import {
   CARDS_ALL,
   CARDS_NEW,
-  CARDS_MOVE
+  CARDS_MOVE,
+  CARDS_CLEAR
 } from '../actions/cards.js';
 
 const initialState = [];
@@ -21,6 +22,8 @@ const cards = (state = initialState, action) => {
         return card;
       });
       return editedCards;
+    case CARDS_CLEAR:
+      return [];
     default:
       return state;
   }

@@ -3,6 +3,7 @@ import axios from 'axios';
 export const CARDS_ALL = 'CARDS_ALL';
 export const CARDS_NEW = 'CARDS_NEW';
 export const CARDS_MOVE = 'CARDS_MOVE';
+export const CARDS_CLEAR = 'CARDS_CLEAR';
 
 export const loadCards = (cards) => {
   return dispatch => {
@@ -41,5 +42,13 @@ export const moveCard = (id, data) => {
       .catch((err) => {
         console.log('ERROR: ', err);
       });
+  };
+};
+
+export const clearCards = () => {
+  return dispatch => {
+    dispatch({
+      type: CARDS_CLEAR
+    });
   };
 };
