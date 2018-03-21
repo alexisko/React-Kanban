@@ -1,11 +1,35 @@
 import React, { Component } from 'react';
+import { connect } from 'react-redux';
 import './styles.css';
 
-import Card from '../Card';
+import { moveCard } from '../../actions/cards.js';
+
+import Card from '../../components/Card';
 
 class Column extends Component {
   constructor(props) {
     super(props);
+
+    // functions
+    this.handleCardDrag = this.handleCardDrag.bind(this);
+    this.handleDrop = this.handleDrop.bind(this);
+    this.handleDragOver = this.handleDragOver.bind(this);
+  }
+
+  handleCardDrag(e, id) {
+    e.dataTransfer.setData("text", id);
+  }
+
+  handleDrop(e, column) {
+    let id = e.dataTransfer.getData("text");
+    var data = {
+      status: column
+    };
+    this.props.moveCard(id, data);
+  }
+
+  handleDragOver(e) {
+    e.preventDefault();
   }
 
   render() {
@@ -13,14 +37,16 @@ class Column extends Component {
       this.props.cards.map(card => {
         return (<Card
           key={card.id}
-          task={card.task}
-          priority={card.priority}
-          created_by={card.created_by}
-          assigned_to={card.assigned_to}
+          {...card}
+          handleCardDrag={(e) => this.handleCardDrag(e, card.id)}
         />);
       });
     return (
-      <div className="column">
+      <div
+        className="column"
+        onDrop={(e) => this.handleDrop(e, this.props.status)}
+        onDragOver={this.handleDragOver}
+      >
         <h1>{this.props.status}</h1>
         <div className="column__section">
             {cards}
@@ -30,4 +56,18 @@ class Column extends Component {
   }
 }
 
-export default Column;
+const mapStateToProps = (state) => {
+  return {
+    cards: state.cards
+  }
+}
+
+const mapDispatchToProps = (dispatch) => {
+  return {
+    moveCard: (id, column) => {
+      dispatch(moveCard(id, column));
+    }
+  }
+}
+
+export default connect(null, mapDispatchToProps)(Column);

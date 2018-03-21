@@ -1,5 +1,8 @@
 import React, { Component } from 'react';
+import { connect } from 'react-redux';
 import { getAllCards } from '../../utils/card.js';
+import { loadCards } from '../../actions/cards.js';
+
 
 import BoardDesktop from './BoardDesktop';
 
@@ -16,13 +19,12 @@ class Board extends Component {
     // functions
     this.handleWindowSizeChange = this.handleWindowSizeChange.bind(this);
 
-    getAllCards()
-      .then((cards) => {
-        this.setState({
-          cardsLoaded: true,
-          cards: cards.data
-        });
+    getAllCards().then((cards) => {
+      this.props.loadCards(cards.data);
+      this.setState({
+        cardsLoaded: true
       });
+    });
   }
 
   componentWillMount() {
@@ -53,7 +55,7 @@ class Board extends Component {
       } else {
         return (
           <div>
-            <BoardDesktop cards={this.state.cards}/>
+            <BoardDesktop/>
           </div>
         );
       }
@@ -63,4 +65,18 @@ class Board extends Component {
   }
 }
 
-export default Board;
+const mapStateToProps = (state) => {
+  return {
+    cards: state.cards
+  }
+}
+
+const mapDispatchToProps = (dispatch) => {
+  return {
+    loadCards: (cards) => {
+      dispatch(loadCards(cards));
+    }
+  }
+}
+
+export default connect(mapStateToProps, mapDispatchToProps)(Board);

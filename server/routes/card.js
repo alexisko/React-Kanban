@@ -6,7 +6,6 @@ const { Card } = db;
 /* Create new card */
 router.route('/new')
   .post((req, res) => {
-    console.log(req.body);
     Card.create({
       task: req.body.task,
       priority: req.body.priority,
@@ -16,7 +15,7 @@ router.route('/new')
       user_id: req.body.user_id
     })
       .then((card) => {
-        res.end();
+        res.json(card);
       })
       .catch((err) => {
         console.log('ERROR: ', err);
@@ -30,6 +29,24 @@ router.route('/all')
       .then((cards) => {
         console.log(cards);
         res.json(cards);
+      })
+      .catch((err) => {
+        console.log('ERROR: ', err);
+      });
+  });
+
+/* Move card */
+router.route('/move/:id')
+  .put((req, res) => {
+    Card.update({
+      status: req.body.status
+    },{
+      where: {
+        id: parseInt(req.params.id)
+      }
+    })
+      .then((card) => {
+        res.json(card);
       })
       .catch((err) => {
         console.log('ERROR: ', err);
@@ -53,7 +70,7 @@ router.route('/:id')
       priority: req.body.priority,
       status: req.body.status,
       assigned_to: req.body.assigned_to
-    }, {
+    },{
       where: {
         id: parseInt(req.params.id)
       }

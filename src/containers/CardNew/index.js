@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
-import { createNewCard } from '../../utils/card.js';
+import { createNewCard } from '../../actions/cards.js';
 import './styles.css';
 
 class CardNew extends Component {
@@ -51,13 +51,14 @@ class CardNew extends Component {
     e.preventDefault();
     var card = {
       task: this.state.task,
-      priority: this.state.priority.value,
-      status: this.state.status.value,
+      priority: this.state.priority,
+      status: this.state.status,
       assigned_to: this.state.assigned_to,
       created_by: this.props.users[0].username,
       user_id: this.props.users[0].user_id
     };
-    createNewCard(card);
+    this.props.createNewCard(card);
+    this.props.closeModal();
   }
 
   render() {
@@ -140,9 +141,18 @@ class CardNew extends Component {
 
 const mapStateToProps = (state) => {
   return {
-    users: state.users
+    users: state.users,
+    cards: state.cards
   }
 }
 
-export default connect(mapStateToProps, null)(CardNew);
+const mapDispatchToProps = (dispatch) => {
+  return {
+    createNewCard: (card) => {
+      dispatch(createNewCard(card));
+    }
+  }
+}
+
+export default connect(mapStateToProps, mapDispatchToProps)(CardNew);
 

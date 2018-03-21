@@ -16,8 +16,6 @@ class NavDesktop extends Component {
       isModalOpen: false
     };
 
-    console.log(this.props);
-
     // functions
     this.handleLogout = this.handleLogout.bind(this);
     this.openModal = this.openModal.bind(this);
@@ -48,7 +46,7 @@ class NavDesktop extends Component {
           <button className="nav__new-task" onClick={this.openModal}>New Task</button>
           <Modal isOpen={this.state.isModalOpen}>
             <button className="modal-close__btn" onClick={this.closeModal}>X</button>
-            <CardNew isOpen={this.state.isModalOpen} />
+            <CardNew closeModal={this.closeModal} />
           </Modal>
           <button className="nav__logout" onClick={this.handleLogout}>Logout</button>
         </div>
