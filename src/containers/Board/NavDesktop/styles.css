@@ -15,6 +15,11 @@ button {
   margin: 0 0.5rem;
 }
 
+.modal-close__btn {
+  color: black;
+  margin: 0;
+}
+
 .nav__logout {
   background-color: rgba(0,0,0,0.3);
 }

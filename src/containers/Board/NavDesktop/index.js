@@ -47,8 +47,8 @@ class NavDesktop extends Component {
         <div className="nav-desktop__nav">
           <button className="nav__new-task" onClick={this.openModal}>New Task</button>
           <Modal isOpen={this.state.isModalOpen}>
-            <CardNew />
-            <button onClick={this.closeModal}>Close</button>
+            <button className="modal-close__btn" onClick={this.closeModal}>X</button>
+            <CardNew isOpen={this.state.isModalOpen} />
           </Modal>
           <button className="nav__logout" onClick={this.handleLogout}>Logout</button>
         </div>

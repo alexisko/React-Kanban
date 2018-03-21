@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import { createNewCard } from '../../utils/card.js';
+import './styles.css';
 
 class CardNew extends Component {
   constructor(props) {
@@ -9,8 +10,8 @@ class CardNew extends Component {
     // initial state
     this.state = {
       task: '',
-      priority: {value: 'Low'},
-      status: {value: 'To-Do'},
+      priority: 'Low',
+      status: 'To-Do',
       assigned_to: ''
     };
 
@@ -61,36 +62,77 @@ class CardNew extends Component {
 
   render() {
     return (
-      <div>
-        <form onSubmit={this.handleSubmit}>
-          <label htmlFor="task">Task</label>
+      <div className="card-new">
+        <h1>Create a New Task</h1>
+        <label htmlFor="task">Task</label>
+        <input
+          name="task"
+          type="text"
+          placeholder=""
+          onChange={this.handleTaskChange}
+        />
+        <label htmlFor="priority">Priority</label>
+        <div className="card-new__radio">
           <input
-            name="task"
-            type="text"
-            placeholder=""
-            onChange={this.handleTaskChange}
+            id="low"
+            type="radio"
+            value="Low"
+            onChange={this.handlePriorityChange}
+            checked={this.state.priority === 'Low'}
           />
-          <label htmlFor="priority">Priority</label>
-          <select value={this.state.priority} onChange={this.handlePriorityChange}>
-            <option value="Low">Low</option>
-            <option value="Medium">Medium</option>
-            <option value="High">High</option>
-          </select>
-          <label htmlFor="status">Status</label>
-          <select value={this.state.status} onChange={this.handleStatusChange}>
-            <option value="To-Do">To-Do</option>
-            <option value="In Progress">In Progress</option>
-            <option value="Done">Done</option>
-          </select>
-          <label htmlFor="assigned-to">Assigned To</label>
+          <label htmlFor="low">Low</label>
           <input
-            name="assigned-to"
-            type="text"
-            placeholder=""
-            onChange={this.handleAssignedToChange}
+            id="medium"
+            type="radio"
+            value="Medium"
+            onChange={this.handlePriorityChange}
+            checked={this.state.priority === 'Medium'}
           />
-          <input type="submit" value="Submit" />
-        </form>
+          <label htmlFor="medium">Medium</label>
+          <input
+            id="high"
+            type="radio"
+            value="High"
+            onChange={this.handlePriorityChange}
+            checked={this.state.priority === 'High'}
+          />
+          <label htmlFor="high">High</label>
+        </div>
+        <label htmlFor="status">Status</label>
+        <div className="card-new__radio">
+          <input
+            id="todo"
+            type="radio"
+            value="To-Do"
+            onChange={this.handleStatusChange}
+            checked={this.state.status === 'To-Do'}
+          />
+          <label htmlFor="todo">To-Do</label>
+          <input
+            id="inprogress"
+            type="radio"
+            value="In Progress"
+            onChange={this.handleStatusChange}
+            checked={this.state.status === 'In Progress'}
+          />
+          <label htmlFor="inprogress">In Progress</label>
+          <input
+            id="done"
+            type="radio"
+            value="Done"
+            onChange={this.handleStatusChange}
+            checked={this.state.status === 'Done'}
+          />
+          <label htmlFor="done">Done</label>
+        </div>
+        <label htmlFor="assigned-to">Assigned To</label>
+        <input
+          name="assigned-to"
+          type="text"
+          placeholder=""
+          onChange={this.handleAssignedToChange}
+        />
+        <input type="submit" value="Submit" onClick={this.handleSubmit}/>
       </div>
     );
   }

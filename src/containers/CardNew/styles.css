@@ -1,0 +1,70 @@
+.card-new {
+  display: flex;
+  flex-direction: column;
+}
+
+.card-new > h1 {
+  font-family: 'Montserrat', sans-serif;
+  text-align: center;
+}
+
+.card-new > input[type="text"] {
+  border: 0;
+  border-bottom: 1px solid lightgray;
+  color: gray;
+  height: 25px;
+  width: 100%;
+  margin-bottom: 1rem;
+}
+
+.card-new > input[type="submit"] {
+  background-color: coral;
+  border: 0;
+  border-radius: 0.5rem;
+  color: white;
+  letter-spacing: 1px;
+  padding: 0.5rem;
+  text-align: center;
+  text-transform: uppercase;
+  margin: 1rem;
+  width: 300px;
+}
+
+.card-new > label {
+  font-size: 11px;
+  color: darkgray;
+  text-transform: uppercase;
+}
+
+.card-new__radio {
+  display:flex;
+  flex-flow:row wrap;
+  margin-bottom: 1rem;
+  margin-top: 0.3rem;
+  text-align: center;
+}
+
+.card-new__radio > label {
+  display:block;
+  flex:1;
+  border:1px solid lightgray;
+  border-right: none;
+  color: darkgray;
+  margin:0;
+  padding:.4em;
+}
+
+.card-new__radio > label:last-child {
+  border-right:0.5px solid lightgray;
+}
+
+.card-new__radio > input[type="radio"] {
+  -webkit-appearance: none;
+  margin: 0;
+  position: absolute;
+}
+
+.card-new__radio > input[type="radio"]:checked + label {
+  background-color: lightgray;
+  color: white;
+}
