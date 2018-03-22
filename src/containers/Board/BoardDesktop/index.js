@@ -25,11 +25,13 @@ class BoardDesktop extends Component {
     return (
       <div className="board-desktop">
         <NavDesktop />
-        <main>
-          <Column status='To-Do' cards={this.sortCards('To-Do')} />
-          <Column status='In Progress' cards={this.sortCards('In Progress')} />
-          <Column status='Done' cards={this.sortCards('Done')} />
-        </main>
+        <div className="board-desktop__container">
+          <main>
+            <Column status='To-Do' cards={this.sortCards('To-Do')} />
+            <Column status='In Progress' cards={this.sortCards('In Progress')} />
+            <Column status='Done' cards={this.sortCards('Done')} />
+          </main>
+        </div>
       </div>
     );
   }
