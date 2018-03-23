@@ -1,10 +1,17 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
+import './styles.css';
+
+// UTILS
 import { getAllCards } from '../../utils/card.js';
+
+// ACTIONS
 import { loadCards } from '../../actions/cards.js';
+import { logoutUser } from '../../actions/users.js';
 
-
-import BoardDesktop from './BoardDesktop';
+// CONTAINERS
+import NavDesktop from './NavDesktop';
+import Column from '../Column';
 
 class Board extends Component {
   constructor(props) {
@@ -12,12 +19,11 @@ class Board extends Component {
 
     // initial state
     this.state = {
-      width: window.innerWidth,
       cardsLoaded: false
     };
 
     // functions
-    this.handleWindowSizeChange = this.handleWindowSizeChange.bind(this);
+    this.sortCards = this.sortCards.bind(this);
 
     getAllCards().then((cards) => {
       this.props.loadCards(cards.data);
@@ -27,38 +33,26 @@ class Board extends Component {
     });
   }
 
-  componentWillMount() {
-    window.addEventListener('resize', this.handleWindowSizeChange);
-  }
-
-  // When changing pages, removes event listener
-  componentWillUnmount() {
-    window.removeEventListener('resize', this.handleWindowSizeChange);
-  }
-
-  handleWindowSizeChange() {
-    this.setState({
-      width: window.innerWidth
+  sortCards(status) {
+    return this.props.cards.filter(card => {
+      return card.status === status;
     });
   }
 
   render() {
-    const { width } = this.state;
-    const isMobile = width <= 400 ? true : false;
     if(this.state.cardsLoaded) {
-      if(isMobile) {
-        return (
-          <div>
-            <h1>Mobile</h1>
+      return(
+        <div className="board-desktop">
+          <NavDesktop />
+          <div className="board-desktop__container">
+            <main>
+              <Column status='To-Do' cards={this.sortCards('To-Do')} />
+              <Column status='In Progress' cards={this.sortCards('In Progress')} />
+              <Column status='Done' cards={this.sortCards('Done')} />
+            </main>
           </div>
-        );
-      } else {
-        return (
-          <div>
-            <BoardDesktop/>
-          </div>
-        );
-      }
+        </div>
+      );
     } else {
       return null;
     }
@@ -67,16 +61,20 @@ class Board extends Component {
 
 const mapStateToProps = (state) => {
   return {
+    users: state.users,
     cards: state.cards
-  }
-}
+  };
+};
 
 const mapDispatchToProps = (dispatch) => {
   return {
     loadCards: (cards) => {
       dispatch(loadCards(cards));
+    },
+    logoutUser: () => {
+      dispatch(logoutUser());
     }
-  }
-}
+  };
+};
 
 export default connect(mapStateToProps, mapDispatchToProps)(Board);
