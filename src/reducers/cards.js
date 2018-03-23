@@ -9,15 +9,63 @@ import {
 const initialState = [
   {
     id: 1,
-    task: '',
-    priority: '',
-    status: '',
-    created_by: '',
-    assigned_to: ''
+    task: 'Get sh*t done!',
+    priority: 'High',
+    status: 'Done',
+    created_by: 'You',
+    assigned_to: 'You'
+  },
+  {
+    id: 2,
+    task: 'Random Task #1',
+    priority: 'Low',
+    status: 'To-Do',
+    created_by: 'You',
+    assigned_to: 'Anyone'
+  },
+  {
+    id: 3,
+    task: 'Random Task #2',
+    priority: 'High',
+    status: 'To-Do',
+    created_by: 'You',
+    assigned_to: 'Anyone'
+  },
+  {
+    id: 4,
+    task: 'Random Task #3',
+    priority: 'Medium',
+    status: 'To-Do',
+    created_by: 'You',
+    assigned_to: 'Anyone'
+  },
+  {
+    id: 5,
+    task: 'Random Task #4',
+    priority: 'Low',
+    status: 'To-Do',
+    created_by: 'You',
+    assigned_to: 'Anyone'
+  },
+  {
+    id: 6,
+    task: 'Random Task #5',
+    priority: 'Medium',
+    status: 'To-Do',
+    created_by: 'You',
+    assigned_to: 'Anyone'
+  },
+  {
+    id: 7,
+    task: 'A task with a really long title about noooothing',
+    priority: 'Medium',
+    status: 'In Progress',
+    created_by: 'You',
+    assigned_to: 'Anyone'
   }
 ];
 
-let currentId = 3;
+let currentId = 7;
 
 const cards = (state = initialState, action) => {
   switch(action.type) {

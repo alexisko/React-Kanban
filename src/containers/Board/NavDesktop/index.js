@@ -1,7 +1,6 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import { logoutUser } from '../../../actions/users.js';
-import { clearCards } from '../../../actions/cards.js';
 import './styles.css';
 
 // CONTAINERS
@@ -25,7 +24,6 @@ class NavDesktop extends Component {
 
   handleLogout() {
     this.props.logoutUser();
-    this.props.clearCards();
   }
 
   openModal() {
@@ -70,9 +68,6 @@ const mapDispatchToProps = (dispatch) => {
   return {
     logoutUser: () => {
       dispatch(logoutUser());
-    },
-    clearCards: () => {
-      dispatch(clearCards());
     }
   }
 }
