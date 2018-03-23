@@ -15,26 +15,25 @@ hr {
 
 .Low {
   background-color: darkseagreen;
-  border-bottom-left-radius: 0.5rem;
-  border-top-left-radius: 0.5rem;
-  margin-right: 1.5rem;
-  width: 5px;
+  color: darkseagreen;
 }
 
 .Medium {
   background-color: gold;
-  border-bottom-left-radius: 0.5rem;
-  border-top-left-radius: 0.5rem;
-  margin-right: 1.5rem;
-  width: 5px;
+  color: gold;
 }
 
 .High {
   background-color: indianred;
-  border-bottom-left-radius: 0.5rem;
-  border-top-left-radius: 0.5rem;
-  margin-right: 1.5rem;
-  width: 5px;
+  color: indianred;
+}
+
+.card__button {
+  color: black;
+  font-size: 12px;
+  font-weight: 900;
+  margin: 0;
+  padding: 0;
 }
 
 .card__content {
@@ -42,6 +41,14 @@ hr {
   flex-direction: column;
   font-size: 12px;
   width: 85%;
+}
+
+.card__settings {
+  display: flex;
+}
+
+.card__settings > span {
+  font-weight: 900;
 }
 
 .card__footer {
@@ -55,4 +62,16 @@ hr {
   font-weight: 700;
   font-size: 1.3rem;
   word-wrap: break-word;
+}
+
+.prioritybar {
+  border-bottom-left-radius: 0.5rem;
+  border-top-left-radius: 0.5rem;
+  margin-right: 1.5rem;
+  width: 5px;
+}
+
+.prioritytext {
+  background-color: transparent;
+  font-weight: 900;
 }

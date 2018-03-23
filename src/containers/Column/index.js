@@ -2,7 +2,7 @@ import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import './styles.css';
 
-import { moveCard } from '../../actions/cards.js';
+import { moveCard, deleteCard } from '../../actions/cards.js';
 
 import Card from '../../components/Card';
 
@@ -11,9 +11,14 @@ class Column extends Component {
     super(props);
 
     // functions
+    this.handleCardDelete = this.handleCardDelete.bind(this);
     this.handleCardDrag = this.handleCardDrag.bind(this);
     this.handleDrop = this.handleDrop.bind(this);
     this.handleDragOver = this.handleDragOver.bind(this);
+  }
+
+  handleCardDelete(id) {
+    this.props.deleteCard(id);
   }
 
   handleCardDrag(e, id) {
@@ -39,6 +44,7 @@ class Column extends Component {
           key={card.id}
           {...card}
           handleCardDrag={(e) => this.handleCardDrag(e, card.id)}
+          handleCardDelete={(e) => this.handleCardDelete(card.id)}
         />);
       });
     return (
@@ -58,16 +64,13 @@ class Column extends Component {
   }
 }
 
-const mapStateToProps = (state) => {
-  return {
-    cards: state.cards
-  }
-}
-
 const mapDispatchToProps = (dispatch) => {
   return {
     moveCard: (id, column) => {
       dispatch(moveCard(id, column));
+    },
+    deleteCard: (id) => {
+      dispatch(deleteCard(id));
     }
   }
 }
