@@ -21,7 +21,12 @@ const cards = (state = initialState, action) => {
       return [...state, action.card];
 
     case CARD_DELETE:
-      return state.filter((card) => card.id.toString() !== action.id);
+      let deleted = state.filter((card) => {
+        if(card.id !== action.id) {
+          return card;
+        }
+      });
+      return deleted;
 
     case CARD_MOVE:
       let edited = state.map((card) => {
