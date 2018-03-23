@@ -57,8 +57,7 @@ class CardNew extends Component {
       priority: this.state.priority,
       status: this.state.status,
       assigned_to: this.state.assigned_to,
-      created_by: this.props.users[0].username,
-      user_id: this.props.users[0].user_id
+      created_by: this.props.users[0].username
     };
 
     if(this.state.task !== '' && this.state.assigned_to !== '') {

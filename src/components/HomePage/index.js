@@ -3,7 +3,6 @@ import { Switch, Route, Redirect } from 'react-router-dom';
 import './styles.css';
 
 import Login from '../../containers/Login';
-import SignUp from '../../containers/SignUp';
 
 const HomePage = ({ match }) => {
   return (
@@ -24,7 +23,6 @@ const HomePage = ({ match }) => {
         <div className="home-page__container--right">
           <Switch>
             <Route path={`${match.path}`} exact component={Login} />
-            <Route path={`${match.path}signup`} exact component={SignUp} />
             <Redirect to={`${match.url}`} />
           </Switch>
         </div>

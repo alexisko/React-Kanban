@@ -2,7 +2,6 @@ import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import { Link, Redirect } from 'react-router-dom';
 import { loginUser } from '../../actions/users.js';
-import { login } from '../../utils/user.js';
 import './styles.css';
 
 class Login extends Component {
@@ -43,20 +42,16 @@ class Login extends Component {
       password: this.state.password
     };
 
-    if(user.username !== '' && user.password !== '') {
-      login(user).then((user) => {
-        this.props.loginUser({
-          user_id: user.data.user_id,
-          username: user.data.username
-        });
-        this.setState({
-          redirect: true
-        });
-      })
-      .catch(() => {
-        this.setState({
-          error: 'Wrong username/password! Try again.'
-        });
+    if(user.username === 'test' && user.password === 'test') {
+      this.props.loginUser({
+        username: user.username
+      });
+      this.setState({
+        redirect: true
+      });
+    } else {
+      this.setState({
+        error: 'Error: Wrong username/password! Try again.'
       });
     }
   }
@@ -86,7 +81,6 @@ class Login extends Component {
           onChange={this.handlePasswordChange}
         />
         <input className="login__submit" type="submit" value="Login" onClick={this.handleLogin}/>
-        <span>New to React-Kanban? <Link to="/signup">Create an account!</Link></span>
       </div>
     );
   }

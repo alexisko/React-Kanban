@@ -2,9 +2,6 @@ import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import './styles.css';
 
-// UTILS
-import { getAllCards } from '../../utils/card.js';
-
 // ACTIONS
 import { loadCards } from '../../actions/cards.js';
 import { logoutUser } from '../../actions/users.js';
@@ -16,21 +13,6 @@ import Column from '../Column';
 class Board extends Component {
   constructor(props) {
     super(props);
-
-    // initial state
-    this.state = {
-      cardsLoaded: false
-    };
-
-    // functions
-    this.sortCards = this.sortCards.bind(this);
-
-    getAllCards().then((cards) => {
-      this.props.loadCards(cards.data);
-      this.setState({
-        cardsLoaded: true
-      });
-    });
   }
 
   sortCards(status) {
@@ -40,22 +22,18 @@ class Board extends Component {
   }
 
   render() {
-    if(this.state.cardsLoaded) {
-      return(
-        <div className="board-desktop">
-          <NavDesktop />
-          <div className="board-desktop__container">
-            <main>
-              <Column status='To-Do' cards={this.sortCards('To-Do')} />
-              <Column status='In Progress' cards={this.sortCards('In Progress')} />
-              <Column status='Done' cards={this.sortCards('Done')} />
-            </main>
-          </div>
+    return(
+      <div className="board-desktop">
+        <NavDesktop />
+        <div className="board-desktop__container">
+          <main>
+            <Column status='To-Do' cards={this.sortCards('To-Do')} />
+            <Column status='In Progress' cards={this.sortCards('In Progress')} />
+            <Column status='Done' cards={this.sortCards('Done')} />
+          </main>
         </div>
-      );
-    } else {
-      return null;
-    }
+      </div>
+    );
   }
 }
 

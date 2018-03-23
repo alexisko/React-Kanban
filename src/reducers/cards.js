@@ -6,19 +6,36 @@ import {
   CARD_DELETE
 } from '../actions/cards.js';
 
-const initialState = [];
+const initialState = [
+  {
+    id: 1,
+    task: '',
+    priority: '',
+    status: '',
+    created_by: '',
+    assigned_to: ''
+  }
+];
+
+let currentId = 3;
 
 const cards = (state = initialState, action) => {
   switch(action.type) {
     case CARDS_ALL:
-      let cards = [...state, ...action.cards];
-      return cards;
+      return state;
 
     case CARDS_CLEAR:
       return [];
 
     case CARD_NEW:
-      return [...state, action.card];
+      return [...state, {
+        id: ++currentId,
+        task: action.card.task,
+        priority: action.card.priority,
+        status: action.card.status,
+        created_by: action.card.created_by,
+        assigned_to: action.card.assigned_to
+      }];
 
     case CARD_DELETE:
       let deleted = state.filter((card) => {
