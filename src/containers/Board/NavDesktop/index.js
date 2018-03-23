@@ -43,15 +43,18 @@ class NavDesktop extends Component {
   render() {
     return (
       <header>
+        <div className="nav-desktop">
         <span className="nav-desktop__logo">React-Kanban</span>
         <div className="nav-desktop__nav">
-          <button className="nav__new-task" onClick={this.openModal}>New Task</button>
+          <button className="nav__button" onClick={this.openModal}>New Task</button>
           <Modal isOpen={this.state.isModalOpen}>
             <button className="modal-close__btn" onClick={this.closeModal}>X</button>
             <CardNew closeModal={this.closeModal} />
           </Modal>
-          <button className="nav__logout" onClick={this.handleLogout}>Logout</button>
+          <button className="nav__button" onClick={this.handleLogout}>Logout</button>
         </div>
+        </div>
+        <div className="nav-desktop--bottom" />
       </header>
     );
   }

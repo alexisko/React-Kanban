@@ -70,7 +70,7 @@ class SignUp extends Component {
           className="signup__input"
           name="password"
           type="password"
-          placeholder="******"
+          placeholder="••••••••"
           onChange={this.handlePasswordChange}
         />
         <input

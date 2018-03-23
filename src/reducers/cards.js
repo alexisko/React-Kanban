@@ -3,8 +3,7 @@ import {
   CARDS_CLEAR,
   CARD_NEW,
   CARD_MOVE,
-  CARD_DELETE,
-  CARD_UPDATE
+  CARD_DELETE
 } from '../actions/cards.js';
 
 const initialState = [];
@@ -22,23 +21,11 @@ const cards = (state = initialState, action) => {
       return [...state, action.card];
 
     case CARD_DELETE:
-      let deleted = state.filter((card) => {
-        if(card.id !== parseInt(action.id)) {
-          return card;
-        }
-      });
-      return deleted;
+      return state.filter((card) => card.id.toString() !== action.id);
 
-    case CARD_UPDATE:
-      let updated = state.filter((card) => {
-        if(card.id === parseInt(action.id)) {
-          // update card
-        }
-      });
-      return updated;
     case CARD_MOVE:
       let edited = state.map((card) => {
-        if(card.id === parseInt(action.id)) {
+        if(card.id.toString() === action.id) {
           card.status = action.status;
         }
         return card;

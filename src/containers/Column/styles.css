@@ -10,16 +10,26 @@
 }
 
 .column > h1 {
-  font-size: 1rem;
-  margin: 1rem 0 0 0;
+  font-size: 1.3rem;
+  margin: 1rem 0 0.5rem 0;
   text-align: center;
   text-transform: uppercase;
 }
 
+.column__contents {
+  padding: 0 1rem;
+  overflow-y: auto;
+}
+
+.column__margin {
+  margin-bottom: 1rem;
+  width: 100%;
+}
+
 .column__section {
   background-color: #f3f3f3;
-  padding: 1rem;
+  border-radius: 0.5rem;
   margin: 0.5rem;
-  height: 78vh;
-  overflow-y: auto;
+  height: 100%;
+  overflow: hidden;
 }

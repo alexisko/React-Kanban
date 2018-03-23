@@ -6,7 +6,7 @@
 
 .signup > a, a:link,
 a:hover, a:visited {
-  font-weight: bolder;
+  font-weight: lighter;
   color: darkgray;
 }
 
@@ -29,6 +29,7 @@ a:hover, a:visited {
   height: 25px;
   width: 300px;
   margin-bottom: 2rem;
+  text-align: center;
 }
 
 .signup__submit {
@@ -36,10 +37,13 @@ a:hover, a:visited {
   border: 0;
   border-radius: 1rem;
   color: white;
-  letter-spacing: 1px;
   padding: 0.5rem;
   text-align: center;
   text-transform: uppercase;
   margin: 1rem;
   width: 300px;
+}
+
+.signup__submit:hover {
+  background-color: #e96c3e;
 }

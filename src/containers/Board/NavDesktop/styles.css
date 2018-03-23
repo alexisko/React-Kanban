@@ -1,9 +1,6 @@
 header {
-  background-color: dodgerblue;
   display: flex;
-  flex-direction: row;
-  justify-content: space-between;
-  padding: 1rem;
+  flex-direction: column;
 }
 
 button {
@@ -20,12 +17,26 @@ button {
   margin: 0;
 }
 
-.nav__logout {
+.nav__button {
   background-color: rgba(0,0,0,0.3);
 }
 
-.nav__new-task {
-  background-color: coral;
+.nav__button:hover {
+  background-color: rgba(0,0,0,0.5);
+}
+
+.nav-desktop {
+  background-color: dodgerblue;
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  padding: 1rem;
+}
+
+.nav-desktop--bottom {
+  background-color: lightskyblue;
+  height: 0.5rem;
+  width: 100%;
 }
 
 .nav-desktop__logo {

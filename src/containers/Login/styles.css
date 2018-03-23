@@ -6,7 +6,7 @@
 
 .login > a, a:link,
 a:hover, a:visited {
-  font-weight: bolder;
+  font-weight: lighter;
   color: darkgray;
 }
 
@@ -19,13 +19,21 @@ a:hover, a:visited {
 .login > h1 {
   font-family: 'Montserrat', sans-serif;
   font-size: 2.5rem;
-  margin-bottom: 3rem;
+  margin-bottom: 0rem;
 }
 
 .login > span,
 .login > label {
   font-size: 12px;
   color: darkgray;
+}
+
+.login__error {
+  display: flex;
+  align-items: center;
+  color: red;
+  height: 3rem;
+  font-size: 12px;
 }
 
 .login__input {
@@ -35,6 +43,7 @@ a:hover, a:visited {
   height: 25px;
   width: 300px;
   margin-bottom: 2rem;
+  text-align: center;
 }
 
 .login__submit {
@@ -42,10 +51,13 @@ a:hover, a:visited {
   border: 0;
   border-radius: 1rem;
   color: white;
-  letter-spacing: 1px;
   padding: 0.5rem;
   text-align: center;
   text-transform: uppercase;
   margin: 1rem;
   width: 300px;
+}
+
+.login__submit:hover {
+  background-color: #e96c3e;
 }

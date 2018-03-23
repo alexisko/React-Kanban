@@ -55,9 +55,11 @@ class Column extends Component {
       >
         <h1>{this.props.status}</h1>
         <div className="column__section">
+          <div className="column__margin" />
           <div className="column__contents">
             {cards}
           </div>
+          <div className="column__margin" />
         </div>
       </div>
     );

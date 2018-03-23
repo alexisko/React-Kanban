@@ -14,8 +14,6 @@ const Card = ({task, priority, created_by, assigned_to, handleCardDrag, handleCa
         <span>Created by: {created_by}</span>
         <div className="card__footer">
           <div className="card__settings">
-          <button className="card__button">Edit</button>
-          <span> / </span>
           <button className="card__button" onClick={handleCardDelete}>Delete</button>
           </div>
           <span className={prioritytext}>{priority}</span>

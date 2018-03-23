@@ -13,25 +13,27 @@ class Login extends Component {
     this.state = {
       username: '',
       password: '',
-      redirect: false
+      redirect: false,
+      error: ''
     };
 
     // functions
     this.handleUsernameChange = this.handleUsernameChange.bind(this);
     this.handlePasswordChange = this.handlePasswordChange.bind(this);
     this.handleLogin = this.handleLogin.bind(this);
-
   }
 
   handleUsernameChange(e) {
     this.setState({
-      username: e.target.value
+      username: e.target.value,
+      error: ''
     });
   }
 
   handlePasswordChange(e) {
     this.setState({
-      password: e.target.value
+      password: e.target.value,
+      error: ''
     });
   }
 
@@ -50,9 +52,12 @@ class Login extends Component {
         this.setState({
           redirect: true
         });
+      })
+      .catch(() => {
+        this.setState({
+          error: 'Wrong username/password! Try again.'
+        });
       });
-    } else {
-      // TODO: ERROR HANDLING
     }
   }
 
@@ -63,6 +68,7 @@ class Login extends Component {
     return (
       <div className="login">
         <h1>Welcome back!</h1>
+        <div className="login__error"><span>{this.state.error}</span></div>
         <label htmlFor="username">Username</label>
         <input
           className="login__input"
