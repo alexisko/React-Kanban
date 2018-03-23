@@ -6,6 +6,7 @@
 .card-new > h1 {
   font-family: 'Montserrat', sans-serif;
   text-align: center;
+  margin-bottom: 0;
 }
 
 .card-new > input[type="text"] {
@@ -28,6 +29,10 @@
   text-transform: uppercase;
   margin: 1rem;
   width: 300px;
+}
+
+.card-new > input:hover {
+  background-color: #e96c3e;
 }
 
 .card-new > label {
@@ -67,4 +72,14 @@
 .card-new__radio > input[type="radio"]:checked + label {
   background-color: lightgray;
   color: white;
+}
+
+.error {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  color: red;
+  font-size: 12px;
+  height: 3rem;
+  width: 100%;
 }

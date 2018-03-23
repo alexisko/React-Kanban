@@ -12,7 +12,8 @@ class CardNew extends Component {
       task: '',
       priority: 'Low',
       status: 'To-Do',
-      assigned_to: ''
+      assigned_to: '',
+      error: ''
     };
 
     // functions
@@ -25,7 +26,8 @@ class CardNew extends Component {
 
   handleTaskChange(e) {
     this.setState({
-      task: e.target.value
+      task: e.target.value,
+      error: ''
     });
   }
 
@@ -43,7 +45,8 @@ class CardNew extends Component {
 
   handleAssignedToChange(e) {
     this.setState({
-      assigned_to: e.target.value
+      assigned_to: e.target.value,
+      error: ''
     });
   }
 
@@ -57,14 +60,23 @@ class CardNew extends Component {
       created_by: this.props.users[0].username,
       user_id: this.props.users[0].user_id
     };
-    this.props.createNewCard(card);
-    this.props.closeModal();
+
+    if(this.state.task !== '' && this.state.assigned_to !== '') {
+      this.props.createNewCard(card);
+      this.props.closeModal();
+    } else {
+      this.setState({
+        error: 'Error: Fields cannot be empty.'
+      });
+    }
+
   }
 
   render() {
     return (
       <div className="card-new">
         <h1>Create a New Task</h1>
+        <div className="error"><span>{this.state.error}</span></div>
         <label htmlFor="task">Task</label>
         <input
           name="task"
