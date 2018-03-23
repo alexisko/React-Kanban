@@ -31,7 +31,7 @@
   width: 300px;
 }
 
-.card-new > input:hover {
+.card-new > input[type="submit"]:hover {
   background-color: #e96c3e;
 }
 
