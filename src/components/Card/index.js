@@ -1,11 +1,12 @@
 import React from 'react';
 import './styles.css';
 
-const Card = ({task, priority, created_by, assigned_to, handleCardDrag, handleCardDelete}) => {
+const Card = ({task, priority, status, created_by, assigned_to, handleCardDrag, handleCardDelete}) => {
+  const card = `card ${status}`;
   const prioritybar = `prioritybar ${priority}`;
   const prioritytext = `prioritytext ${priority}`;
   return (
-    <div className="card" draggable="true" onDragStart={handleCardDrag}>
+    <div className={card} draggable="true" onDragStart={handleCardDrag}>
       <div className={prioritybar} />
       <div className="card__content">
         <span className="card__task">{task}</span>

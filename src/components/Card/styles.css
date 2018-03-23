@@ -14,19 +14,27 @@ hr {
   border-color: rgba(0,0,0,0.1);
 }
 
+.Done > .card__content > span {
+  text-decoration: line-through;
+  text-decoration-color: black;
+}
+
 .Low {
   background-color: darkseagreen;
   color: darkseagreen;
+  text-decoration: none;
 }
 
 .Medium {
   background-color: gold;
   color: gold;
+  text-decoration: none;
 }
 
 .High {
   background-color: indianred;
   color: indianred;
+  text-decoration: none;
 }
 
 .card__button {
